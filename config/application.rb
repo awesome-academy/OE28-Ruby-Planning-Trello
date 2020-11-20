@@ -16,5 +16,7 @@ module OE28RubyPlanningTrello
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
     config.gem "validates_timeliness"
+
+    config.autoload_paths << Rails.root.join("lib")
   end
 end
