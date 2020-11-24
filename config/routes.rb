@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
+  mount API::Base, at: "/"
+
   scope "(:locale)", locale: /en|vi/ do
     require "sidekiq/web"
     mount Sidekiq::Web => "/sidekiq"
