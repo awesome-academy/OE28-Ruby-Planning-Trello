@@ -10,6 +10,7 @@ class Board < ApplicationRecord
   has_many :lists, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :labels, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :name, presence: true,
     length: {maximum: Settings.validate.max_board_name}

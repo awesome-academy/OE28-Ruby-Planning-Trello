@@ -119,6 +119,7 @@
     .notifications{
       max-height: 400px;
       overflow-y: auto;
+      overflow-x: hidden;
 
       .notification {
         border-radius: 3px;

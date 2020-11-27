@@ -63,6 +63,8 @@ Rails.application.routes.draw do
 
     resources :search, only: :index
 
+    resources :messages
+
     match "*unmatched", to: "application#rescue_404_exception", via: :all
   end
 end

@@ -1,0 +1,11 @@
+<div class="message">
+  <% if message.sender_id.eql? current_user.id %>
+    <div class="send">
+      <div class="message-box"><%= message.content %></div>
+    </div>
+  <% else %>
+    <div class="receive">
+      <div class="message-box"><%= message.content %></div>
+    </div>
+  <% end %>
+</div>

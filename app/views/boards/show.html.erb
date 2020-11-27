@@ -74,19 +74,37 @@
     </div>
   <% end %>
   <ul class="board-wrapper">
-    <%= render partial: "lists/list", collection: @data[:lists], as: :list %>
-    <% if @relation %>
-      <div class="board-list list-add">
-        <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div>
-        <div class="collapse" id="add-list">
-          <%= form_for :list, url: lists_path do |f| %>
-            <%= hidden_field_tag :board_id, @board.id %>
-            <%= f.text_field :name, class: "form-control" %>
-            <%= f.submit t(".addlist"), class: "btn btn-success mt-2" %>
-          <% end %>
-        </div>
+    <div class="chat-wrapper">
+      <%= render partial: "boards/chat_member", collection: @board.add_users.exclude_ids(current_user.id), as: :user %>
+    </div>
+    <div class="chat-box" id="chat-box">
+      <div id="receiver-info"></div>
+      <div id="messages-wrapper"></div>
+      <div class="sender">
+        <%= form_with model: @message do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+          <%= hidden_field_tag :receiver_id %>
+          <%= hidden_field_tag :board_id, @board.id %>
+          <%= f.text_field :content, class: "form-control", id: "message-input" %>
+          <%= f.submit t(".submit"), class: "d-block btn btn-success mt-3" %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="main-wrapper">
+      <%= render partial: "lists/list", collection: @data[:lists], as: :list %>
+      <% if @relation %>
+        <div class="board-list list-add">
+          <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div>
+          <div class="collapse" id="add-list">
+            <%= form_for :list, url: lists_path do |f| %>
+              <%= hidden_field_tag :board_id, @board.id, id: "board-id" %>
+              <%= f.text_field :name, class: "form-control" %>
+              <%= f.submit t(".addlist"), class: "btn btn-success mt-2" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </main>
 
 <div id="tag-modal">

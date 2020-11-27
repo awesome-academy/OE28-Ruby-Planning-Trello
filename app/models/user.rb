@@ -15,6 +15,14 @@ class User < ApplicationRecord
   has_many :join_tags, through: :tag_users, source: :tag
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :send_messages, class_name: Message.name,
+    foreign_key: :receiver_id,
+    dependent: :destroy
+  has_many :receive_messages, class_name: Message.name,
+    foreign_key: :sender_id,
+    dependent: :destroy
+  has_many :sender, through: :send_messages, source: :sender
+  has_many :receiver, through: :receive_messages, source: :receiver
 
   mount_uploader :avatar, AvatarUploader
 
