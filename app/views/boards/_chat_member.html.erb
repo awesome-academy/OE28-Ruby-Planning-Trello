@@ -1,0 +1,4 @@
+<div class="chat-member" id="chat-member-<%= user.id %>" data-user="<%= user.id %>" data-board="<%= @board.id %>">
+  <div class="name"><%= user.name %></div>
+  <%= image_tag user.avatar.url, alt: t(".avatar"), class: "rounded rounded-circle mini-avatar" %>
+</div>

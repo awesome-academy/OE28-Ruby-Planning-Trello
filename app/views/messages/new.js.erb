@@ -1,0 +1,12 @@
+$('.chat-box').css('visibility', 'visible');
+$('.chat-box').css('width', '350px');
+$('#receiver-info').html('<%= image_tag @receiver.avatar.url, alt: t(".avatar"), class: "rounded rounded-circle mini-avatar", id: "receiver-avatar" %>' +
+                         '<p id="receiver-name"><%= @receiver.name %></p>' +
+                         '<div id="close-chat" onclick="closeChat()">&times;</div>');
+$('#messages-wrapper').html('<%= j render partial: "boards/message", collection: @messages, as: :message %>')
+$('#receiver_id').val(<%= @receiver.id %>);
+
+function closeChat() {
+  $('#chat-box').css('visibility', 'hidden');
+  $('#chat-box').css('width', '0');
+}

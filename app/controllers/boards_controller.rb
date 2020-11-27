@@ -36,6 +36,7 @@ class BoardsController < ApplicationController
       notifications: @board.notifications.order_created,
       other_emails: User.exclude_ids(@board.add_users.ids).pluck(:email)
     }
+    @message = Message.new
     @tag = Tag.new
     @checklist = Checklist.new
   end

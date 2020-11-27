@@ -468,6 +468,7 @@ DEPENDENCIES
   rails-i18n
   rails_best_practices
   ransack
+  redis
   rspec-rails (~> 4.0.1)
   rubocop (~> 0.74.0)
   rubocop-checkstyle_formatter

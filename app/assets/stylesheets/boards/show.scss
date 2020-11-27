@@ -1,6 +1,7 @@
 @import 'boards/menu';
 @import 'color';
 @import 'lists/list';
+@import 'boards/chat';
 
 main {
   .board-info {
@@ -125,9 +126,20 @@ main {
   }
 
   .board-wrapper {
-    padding: 10px 20px;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
+
+    .chat-wrapper {
+      padding: 25px 0;
+      width: 5%;
+    }
+
+    .main-wrapper {
+      width: 95%;
+      padding: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   .notmember {

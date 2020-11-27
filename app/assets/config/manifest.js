@@ -9,3 +9,4 @@
 //= link users/info
 //= link users/closed
 //= link users/activities
+//= link boards/chat
